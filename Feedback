@@ -22,38 +22,39 @@ Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.42517221, 0, 0.329177052, 0) -- Show the UI by default
+Frame.Position = UDim2.new(0.12517221, 0, 0.329177052, 0) -- Show the UI by default
 Frame.Size = UDim2.new(0, 238, 0, 274)
 
 TextBox.Parent = Frame
-TextBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextBox.BorderSizePixel = 0
 TextBox.Position = UDim2.new(0.155462191, 0, 0.503649652, 0)
-TextBox.Size = UDim2.new(0, 164, 0, 40)
+TextBox.Size = UDim2.new(0, 164, 0, 30)
 TextBox.Font = Enum.Font.SourceSans
-TextBox.Text = "Feedback Here"
+TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.TextSize = 10.000
+TextBox.TextSize = 17.000
+-- TextBox.TextWrapped = true
 
-UICorner.CornerRadius = UDim.new(0.100000001, 8)
+UICorner.CornerRadius = UDim.new(0.11, 1)
 UICorner.Parent = TextBox
 
-UICorner_2.CornerRadius = UDim.new(0.100000001, 8)
+UICorner_2.CornerRadius = UDim.new(0.10, 1)
 UICorner_2.Parent = Frame
 
 TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.159663871, 0, 0.755474448, 0)
-TextButton.Size = UDim2.new(0, 161, 0, 46)
+TextButton.Position = UDim2.new(0.159663871, 0, 0.655474448, 0)
+TextButton.Size = UDim2.new(0, 164, 0, 20)
 TextButton.Font = Enum.Font.Ubuntu
 TextButton.Text = "Submit"
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.TextSize = 25.000
+TextButton.TextSize = 15.000
 
-UICorner_3.CornerRadius = UDim.new(0.100000001, 8)
+UICorner_3.CornerRadius = UDim.new(0.11, 2)
 UICorner_3.Parent = TextButton
 
 -- Set the image for the ImageLabel
