@@ -1,0 +1,87 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.5, -390, 0.5, -194)
+Frame.Size = UDim2.new(0, 780, 0, 388)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.150498852, 0, 0.194623098, 0)
+TextLabel.Size = UDim2.new(0, 595, 0, 119)
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "Wanna join my discord?"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 76.000
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(2, 106, 2)
+TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.117514126, 0, 0.608247399, 0)
+TextButton.Size = UDim2.new(0, 246, 0, 73)
+TextButton.Font = Enum.Font.SourceSansBold
+TextButton.Text = "Yes"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextSize = 40.000
+TextButton.MouseButton1Click:Connect(function()
+setclipboard("https://discord.gg/2MnpwtzJeE")
+TextButton.Text = "Copied to clipboard"
+wait(2.5)
+    Frame:Remove() 
+end)
+
+TextButton_2.Parent = Frame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(136, 1, 3)
+TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.BorderSizePixel = 0
+TextButton_2.Position = UDim2.new(0.598870039, 0, 0.608247399, 0)
+TextButton_2.Size = UDim2.new(0, 246, 0, 73)
+TextButton_2.Font = Enum.Font.SourceSansBold
+TextButton_2.Text = "No"
+TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.TextSize = 40.000
+TextButton_2.MouseButton1Click:Connect(function()
+    Frame:Remove() 
+end)
+
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.387787968, 0, 0.46524173, 0)
+TextLabel_2.Size = UDim2.new(0, 176, 0, 43)
+TextLabel_2.Font = Enum.Font.SourceSansBold
+TextLabel_2.Text = "(You will get this prompt 3 times)"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 15.000
+
+TextLabel_3.Parent = Frame
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+TextLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_3.BorderSizePixel = 0
+TextLabel_3.Position = UDim2.new(0.372881353, 0, 0.0231958758, 0)
+TextLabel_3.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_3.Font = Enum.Font.SourceSansBold
+TextLabel_3.Text = "Flame's Hub  🔥"
+TextLabel_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_3.TextSize = 65.000
