@@ -1,73 +1,212 @@
--- // Constants \\ --
--- [ Services ] --
-local Services = setmetatable({}, {__index = function(Self, Index)
-local NewService = game.GetService(game, Index)
-if NewService then
-Self[Index] = NewService
+-- Was not made by me
+local partseeable = false
+local player = game.Players.LocalPlayer
+if not game:IsLoaded() then
+	game.Loaded:Wait()
 end
-return NewService
-end})
+local currentpart = workspace
+function stopuntilpart(list)
+local	i = #list
+	for _,v in pairs(list) do
+		
+		if list[i] ~= Enum.Material.Air then
+			return v,i
+		end
+		i -= 1
+	end
+	return list[#list],i
+end
+function isfalling(rootr)
+	if rootr ~= nil then
+	local isfall = rootr.AssemblyLinearVelocity.Y > 10
+	if not isfall then
+	isfall =  rootr.AssemblyLinearVelocity.Y < -10
+	end
+	return isfall
+end
+	end
+function stopuntilair(list)
+	local	i = #list
+	for _,v in pairs(list) do
 
--- [ LocalPlayer ] --
-local LocalPlayer = Services.Players.LocalPlayer
-
--- // Functions \\ --
-local function PlayerAdded(Player)
-   local Detected = false
-   local Character;
-   local PrimaryPart;
-
-   local function CharacterAdded(NewCharacter)
-       Character = NewCharacter
-       repeat
-           wait()
-           PrimaryPart = NewCharacter:FindFirstChild("HumanoidRootPart")
-       until PrimaryPart
-       Detected = false
-   end
-
-   CharacterAdded(Player.Character or Player.CharacterAdded:Wait())
-   Player.CharacterAdded:Connect(CharacterAdded)
-   Services.RunService.Heartbeat:Connect(function()
-       if (Character and Character:IsDescendantOf(workspace)) and (PrimaryPart and PrimaryPart:IsDescendantOf(Character)) then
-           if PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 or PrimaryPart.AssemblyLinearVelocity.Magnitude > 100 then
-               if Detected == false then end
-               Detected = true
-               for i,v in ipairs(Character:GetDescendants()) do
-                   if v:IsA("BasePart") then
-                       v.CanCollide = false
-                       v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-                       v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-                       v.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
-                   end
-               end
-               PrimaryPart.CanCollide = false
-               PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-               PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-               PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
-           end
-       end
-   end)
+		if list[i] == Enum.Material.Air then
+			return v,i
+		end
+		i -= 1
+	end
+	return list[1],i
+end
+local character = player.Character
+local floor = {}
+local records = {}
+local igtable = {character}
+local falltime = 0
+local antifallsound = Instance.new("Sound")
+antifallsound.SoundId = "http://www.roblox.com/asset/?id=13114759"
+antifallsound.Parent =  game.SoundService
+antifallsound.Name = "AntiFallsfx"
+local errorsound = Instance.new("Sound")
+errorsound.SoundId = "rbxassetid://550209561"
+errorsound.Parent =  game.SoundService
+errorsound.Name = "ERROR"
+errorsound.Volume = 1
+function ignorenoncollide(rootr)
+	igtable = {character}
+	local	parts = workspace:GetPartBoundsInRadius(rootr.Position,10)
+	for i,v in pairs(parts) do
+		if v.CanCollide == false then
+		table.insert(igtable,v)
+			end
+		end
 end
 
--- // Event Listeners \\ --
-for i,v in ipairs(Services.Players:GetPlayers()) do
-   if v ~= LocalPlayer then
-       PlayerAdded(v)
-   end
-end
-Services.Players.PlayerAdded:Connect(PlayerAdded)
+function removenonstandable(list,char)
 
-local LastPosition = nil
-Services.RunService.Heartbeat:Connect(function()
-   pcall(function()
-       local PrimaryPart = LocalPlayer.Character.PrimaryPart
-       if PrimaryPart.AssemblyLinearVelocity.Magnitude > 250 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 250 then
-           PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-           PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-           PrimaryPart.CFrame = LastPosition
-       elseif PrimaryPart.AssemblyLinearVelocity.Magnitude < 50 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 then
-           LastPosition = PrimaryPart.CFrame
-       end
-   end)
-end)
+	for _,v in pairs(list) do
+local ray = Ray.new(v.Position,Vector3.new(0,-10,0))
+	local part = workspace:FindPartOnRayWithIgnoreList(ray,igtable,false,false)
+		if  not part then
+			local i = table.find(records,v)
+			--print("Removed "..tostring(i))
+			table.remove(records,i)
+				table.remove(floor,i)
+		
+			
+			end
+	end
+end
+function isair(list,rootr)
+
+		local ray = Ray.new(rootr.Position,Vector3.new(0,-100000,0))
+		local part = workspace:FindPartOnRayWithIgnoreList(ray,igtable,false,false)
+		if  not part then
+			return true
+else
+		if part:IsA("BasePart") then
+		if currentpart then
+		if currentpart:FindFirstChild("Debug") then
+	currentpart = part
+		end
+end
+		end
+		end
+	
+	return false
+end
+function returnlengthtext(text,max)
+
+
+	text =  string.sub(text,1,max)
+return text
+end
+function getindex(index,length,origin)
+	local locali = index
+	for i=1,math.abs(index) do
+		if index-i >= length then
+		else
+			locali = index-i
+		end
+		end
+	index = locali
+	if locali >= length then
+			return origin
+		else
+			return locali
+		end
+	end
+if not player.Character then
+	repeat
+		wait()
+	until player.Character
+end
+character = player.Character
+root = character:FindFirstChild("HumanoidRootPart") 
+humanoid = character:FindFirstChildOfClass("Humanoid")
+
+local touching = {}
+local start = tick()
+local amount = 0
+while task.wait() do
+	if not player.Character then
+	repeat
+	wait()
+		until player.Character
+		end
+	
+	character = player.Character
+	root = character:FindFirstChild("HumanoidRootPart") 
+	humanoid = character:FindFirstChildOfClass("Humanoid")
+	if currentpart == nil then
+currentpart = workspace
+	end
+	if isfalling(root) and humanoid:GetState() ~= Enum.HumanoidStateType.Jumping and humanoid:GetState() == Enum.HumanoidStateType.Freefall then
+		falltime = tick()-start
+
+	else
+		if falltime ~= 0 then
+			--print("Falled for "..returnlengthtext(tostring(falltime),4).." Seconds")
+		end
+		falltime = 0
+		start = tick()
+
+	end
+	if root ~= nil and humanoid ~= nil then
+		table.insert(records,root.CFrame)
+		table.insert(floor,humanoid.FloorMaterial)
+	
+	
+				
+		ignorenoncollide(root)
+		removenonstandable(records,character)
+		if root ~= nil then
+		if root.Position.Y-20 < workspace.FallenPartsDestroyHeight then
+			falltime = 2
+			amount = 0
+			else
+			amount = 2 * humanoid.JumpPower / game.Workspace.Gravity
+		--amount = 50
+			end
+			end
+		if isair(records,root) and humanoid.Health > 0 and falltime > amount  then
+		
+					local v,i = stopuntilpart(floor)
+				local offset =getindex(-5,#floor,0) 
+				local index = i
+				if offset == 0 then
+				index = records[i]
+				else
+					--print("Offset of "..tostring(offset))
+					index = records[i+offset]
+				end	
+					if index then
+					print("Prevented Falling to the doom :)")
+					if antifallsound then
+						if not antifallsound.IsPlaying then
+							antifallsound:Play()
+						end
+					end
+					for i2,v2 in pairs(character:GetChildren()) do
+						if v2:IsA("BasePart") then
+						v2.Velocity = Vector3.new()
+						v2.RotVelocity = Vector3.new()
+						end
+						end
+				root.CFrame = index
+				table.remove(records,table.find(records,index))
+				table.remove(floor,i)
+			
+					else
+				if errorsound then
+					if not errorsound.IsPlaying then
+						errorsound:Play()
+					end
+				end
+				if root ~= nil then
+				if root.Position.Y-20 < workspace.FallenPartsDestroyHeight then
+					root.Velocity = Vector3.new(0,20* root.Mass,0) 
+				end
+				end
+				end
+			end
+		end
+	end
