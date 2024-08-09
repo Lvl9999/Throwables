@@ -807,8 +807,8 @@ Farming:Toggle("Auto Collect Traits",false,function(Value)
             task.wait(0.45);
             if game:GetService("Players").LocalPlayer.PlayerGui.UI.Gameplay.TraitHands.Visible == true and game:GetService("Players").LocalPlayer.PlayerGui.UI.Gameplay.TraitHands.ShowAll.Visible == true then
                 local RevealEverything = game:GetService("Players").LocalPlayer.PlayerGui.UI.Gameplay.TraitHands.ShowAll.TextLabel;
-                game:GetService("VirtualInputManager"):SendMouseButtonEvent(RevealEverything.AbsolutePosition.X+RevealEverything.AbsoluteSize.X/2,RevealEverything.AbsolutePosition.Y+50,0,true,RevealEverything,2);
-                game:GetService("VirtualInputManager"):SendMouseButtonEvent(RevealEverything.AbsolutePosition.X+RevealEverything.AbsoluteSize.X/2,RevealEverything.AbsolutePosition.Y+50,0,false,RevealEverything,2);
+                game:GetService("VirtualInputManager"):SendMouseButtonEvent(RevealEverything.AbsolutePosition.X+RevealEverything.AbsoluteSize.X/2.5,RevealEverything.AbsolutePosition.Y+50,0,true,RevealEverything,2.5);
+                game:GetService("VirtualInputManager"):SendMouseButtonEvent(RevealEverything.AbsolutePosition.X+RevealEverything.AbsoluteSize.X/2.5,RevealEverything.AbsolutePosition.Y+50,0,false,RevealEverything,2.5);
             end
         end
         task.wait(0.15);
@@ -830,8 +830,8 @@ Farming:Toggle("Auto Collect Traits",false,function(Value)
                                 task.wait(0.51);for _,x in ipairs(game:GetService("Players").LocalPlayer.PlayerGui.UI.Prompt.Frame.Buttons:GetChildren()) do
                                     if x:IsA("TextButton") then
                                         if x:FindFirstChildOfClass("TextLabel").Text == "Yes" then
-                                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2,x.AbsolutePosition.Y + 50,0,true,x,2);
-                                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2,x.AbsolutePosition.Y + 50,0,false,x,2);
+                                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2.5,x.AbsolutePosition.Y + 50,0,true,x,2.5);
+                                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2.5,x.AbsolutePosition.Y + 50,0,false,x,2.5);
                                         end
                                     end
                                     task.spawn(function()task.wait(5.15);
@@ -842,13 +842,13 @@ Farming:Toggle("Auto Collect Traits",false,function(Value)
                         end
                     end
                     if not FoundTrait then
-                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(DiscardTrait.AbsolutePosition.X+DiscardTrait.AbsoluteSize.X/2,DiscardTrait.AbsolutePosition.Y+50,0,true,DiscardTrait,2);
-                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(DiscardTrait.AbsolutePosition.X+DiscardTrait.AbsoluteSize.X/2,DiscardTrait.AbsolutePosition.Y+50,0,false,DiscardTrait,2);
+                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(DiscardTrait.AbsolutePosition.X+DiscardTrait.AbsoluteSize.X/2.5,DiscardTrait.AbsolutePosition.Y+50,0,true,DiscardTrait,2.5);
+                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(DiscardTrait.AbsolutePosition.X+DiscardTrait.AbsoluteSize.X/2.5,DiscardTrait.AbsolutePosition.Y+50,0,false,DiscardTrait,2.5);
                         task.wait(0.51);for _,x in ipairs(game:GetService("Players").LocalPlayer.PlayerGui.UI.Prompt.Frame.Buttons:GetChildren()) do
                             if x:IsA("TextButton") then
                                 if x:FindFirstChildOfClass("TextLabel").Text == "Yes" then
-                                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2,x.AbsolutePosition.Y + 50,0,true,x,2);
-                                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2,x.AbsolutePosition.Y + 50,0,false,x,2);
+                                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2.5,x.AbsolutePosition.Y + 50,0,true,x,2.5);
+                                    game:GetService("VirtualInputManager"):SendMouseButtonEvent(x.AbsolutePosition.X + x.AbsoluteSize.X/2.5,x.AbsolutePosition.Y + 50,0,false,x,2.5);
                                 end
                             end
                         end
