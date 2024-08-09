@@ -1,6 +1,6 @@
 -- // Mythril Hub ♦️ \\ -- | (Version 1.01) [ Made by ThroughTheFireAndFlames#9925 :3 ] Any attempts to make profit off this project are pathetic and will be laughed at.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-repeat task.wait(0.25) until game:IsLoaded();local BoredLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvl9999/Throwables/main/TestUI"))();
+repeat task.wait(0.25) until game:IsLoaded();local BoredLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvl9999/Bored/main/Backup"))();
 getgenv().ToggleUI = "J";
 getgenv().CurrentVersion = "1.01";
 
@@ -825,8 +825,8 @@ Farming:Toggle("Auto Collect Traits",false,function(Value)
                     for _,v in ipairs(TraitHolders) do
                         for _,x in ipairs(getgenv().WantedThoseTraits) do
                             if v.Text:match(x) then FoundTrait = true;
-                                game:GetService("VirtualInputManager"):SendMouseButtonEvent(v.AbsolutePosition.X + v.AbsoluteSize.X/2,v.AbsolutePosition.Y + 50,0,true,v,2);
-                                game:GetService("VirtualInputManager"):SendMouseButtonEvent(v.AbsolutePosition.X + v.AbsoluteSize.X/2,v.AbsolutePosition.Y + 50,0,false,v,2);
+                                game:GetService("VirtualInputManager"):SendMouseButtonEvent(v.AbsolutePosition.X + v.AbsoluteSize.X/2.5,v.AbsolutePosition.Y + 50,0,true,v,2.5);
+                                game:GetService("VirtualInputManager"):SendMouseButtonEvent(v.AbsolutePosition.X + v.AbsoluteSize.X/2.5,v.AbsolutePosition.Y + 50,0,false,v,2.5);
                                 task.wait(0.51);for _,x in ipairs(game:GetService("Players").LocalPlayer.PlayerGui.UI.Prompt.Frame.Buttons:GetChildren()) do
                                     if x:IsA("TextButton") then
                                         if x:FindFirstChildOfClass("TextLabel").Text == "Yes" then
